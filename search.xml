@@ -4,12 +4,31 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2025/04/19/hello-world/"/>
-      <url>/2025/04/19/hello-world/</url>
+      <title></title>
+      <link href="/uncategorized/c5b7c33a925e/"/>
+      <url>/uncategorized/c5b7c33a925e/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>新的标题</title>
+      <link href="/%E6%8A%80%E6%9C%AF/7f007699ec1b/"/>
+      <url>/%E6%8A%80%E6%9C%AF/7f007699ec1b/</url>
+      
+        <content type="html"><![CDATA[<h2 id="摘要">摘要</h2><p>SageMath是每个密码手必备工具，本文介绍了SageMath9.3和在Linux Kali下SageMath10.4的安装和使用，以及Crypto.Util.Number模块不能识别等问题的解决方法。</p><h2 id="SageMath-9-3-安装">SageMath 9.3 安装</h2><p>SageMath 9.3可以使用Notepad编辑和保存代码，非常方便。</p><p>官网下载（Windows）： <a href="https://mirrors.aliyun.com/sagemath/win/index.html">SageMath 9.3</a></p><h2 id="Kali-Linux-安装">Kali Linux 安装</h2><p>搜索&quot;启用或关闭Windows功能&quot;勾选&quot;适用于Linux的Windows子系统&quot; ：</p><img src="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250301100454599.png" alt="image-20250301100454545" style="zoom:50%;" /><p>在Microsoft Store上安装Kali Linux，设置用户名和密码，其中密码没有回显。如果忘记密码，可以用pwd命令重置密码。</p><p>完成后应回显：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿你的用户名)-[~]</span><br><span class="line">└─#</span><br></pre></td></tr></table></figure><h2 id="SageMath-10-4-安装">SageMath 10.4 安装</h2><p>SageMath 10.4 相较于SageMath 9.3，不能使用Notepad，而且没有Window版本的。<br>但SageMath 10.4 具有不可取代的优势，算法优化更好，支持更多函数，有的程序只能用SageMath 10.4 实现。</p><p>官网的教程：<a href="https://doc.sagemath.org/html/en/installation/conda.html">从 conda-forge 安装SageMath10.4</a></p><p>注意：Mamba现在已经被弃用！！请使用Conda！！</p><p><strong>1. 安装Miniforge</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L -O &quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh&quot;</span><br><span class="line">bash Miniforge3-$(uname)-$(uname -m).sh</span><br></pre></td></tr></table></figure><p><strong>2. 安装sage</strong></p><p>使用 <code>conda</code> 创建包含 SageMath 的新 conda 环境（其中X 是 Python 的版本，可以用 <code>python3 -v</code> 来查询）：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n sage sage python=X</span><br></pre></td></tr></table></figure><p><strong>3. 启动sage</strong></p><p>请记住启动sage的命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿*****)-[~]</span><br><span class="line">└─# conda activate sage</span><br><span class="line"></span><br><span class="line">(sage) ┌──(root㉿*****)-[~]</span><br><span class="line">└─# sage</span><br></pre></td></tr></table></figure><h2 id="可能的问题">可能的问题</h2><p><strong>1. SageMath 9.3 无法使用sage</strong></p><p>请检查文件是否为sage文件，创建（New）时请选择SageMath 9.3 而不是 python 3。</p><p><strong>2. Crypto.Util.number模块无法被识别</strong></p><p><strong>2.1 安装模块</strong></p><p>首先安装相关模块，输入命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install pycryptodome</span><br><span class="line">pip install pycrypto</span><br><span class="line">pip install Crypto</span><br></pre></td></tr></table></figure><p>其中后两条命令可能是非必要的，尚未测试。</p><p>如果提示pip版本低请先更新pip：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure><p><strong>2.2 重命名</strong></p><p>对于SageMath 9.3，找到&quot;SageMath 9.3\runtime\opt\sagemath-9.3\local\lib\python3.7\site-packages&quot;</p><p>将&quot;crypto&quot;文件夹重命名为&quot;Crypto&quot;。</p><p>对于SageMath 10.4，无需重命名。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
       
       
     </entry>
