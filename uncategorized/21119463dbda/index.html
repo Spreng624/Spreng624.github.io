@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Spreng的小屋 | Spreng的小屋</title><meta name="author" content="Spreng"><meta name="copyright" content="Spreng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="摘要 本文详细阐述了个人博客的搭建过程，涵盖域名和服务器的准备工作、服务器配置以及基于 WordPress 的建站步骤。 在此，特别感谢 yolo 师傅的悉心指导，其专业支持为整个搭建过程提供了有力保障。 准备工作 1. 云服务器 第一次用的是阿里云，2核2G，首年68元，性价比还是很高的。 过一年后再找找其他服务器，个人博客对性能要求不高，应该能找到便宜的。 2. ICP备案 中国大陆内的服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spreng的小屋">
+<meta property="og:url" content="http://spreng624.github.io/uncategorized/21119463dbda/index.html">
+<meta property="og:site_name" content="Spreng的小屋">
+<meta property="og:description" content="摘要 本文详细阐述了个人博客的搭建过程，涵盖域名和服务器的准备工作、服务器配置以及基于 WordPress 的建站步骤。 在此，特别感谢 yolo 师傅的悉心指导，其专业支持为整个搭建过程提供了有力保障。 准备工作 1. 云服务器 第一次用的是阿里云，2核2G，首年68元，性价比还是很高的。 过一年后再找找其他服务器，个人博客对性能要求不高，应该能找到便宜的。 2. ICP备案 中国大陆内的服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419145326001.jpg">
+<meta property="article:published_time" content="2025-04-22T07:00:51.517Z">
+<meta property="article:modified_time" content="2025-02-28T14:44:16.883Z">
+<meta property="article:author" content="Spreng">
+<meta property="article:tag" content="技术分享 学习 CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419145326001.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "http://spreng624.github.io/uncategorized/21119463dbda/",
+  "image": "https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419145326001.jpg",
+  "datePublished": "2025-04-22T07:00:51.517Z",
+  "dateModified": "2025-02-28T14:44:16.883Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Spreng",
+      "url": "http://spreng624.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419142053336.png"><link rel="canonical" href="http://spreng624.github.io/uncategorized/21119463dbda/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spreng的小屋',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419145326001.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: orange;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419162855118.png" alt="Logo"><span class="site-name">Spreng的小屋</span></a><a class="nav-page-title" href="/"><span class="site-name">Spreng的小屋</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-22T07:00:51.517Z" title="发表于 2025-04-22 15:00:51">2025-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-28T14:44:16.883Z" title="更新于 2025-02-28 22:44:16">2025-02-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">772</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="摘要">摘要</h2>
+<p>本文详细阐述了个人博客的搭建过程，涵盖域名和服务器的准备工作、服务器配置以及基于 WordPress 的建站步骤。<br>
+在此，特别感谢 yolo 师傅的悉心指导，其专业支持为整个搭建过程提供了有力保障。</p>
+<h2 id="准备工作">准备工作</h2>
+<p><strong>1. 云服务器</strong></p>
+<p>第一次用的是阿里云，2核2G，首年68元，性价比还是很高的。<br>
+过一年后再找找其他服务器，个人博客对性能要求不高，应该能找到便宜的。</p>
+<p><strong>2. ICP备案</strong></p>
+<p>中国大陆内的服务器需要备案，得打印两个附件（告知书和承诺书），拍一个视频（朗读承诺书）。</p>
+<p><strong>3. 域名</strong></p>
+<p>在阿里云上注册域名，<code>.top</code> 后缀的一般比较便宜，10年188元，还能接受的价格（又掉入消费陷阱了）。<br>
+在域名控制台提交信息模板等审核，将域名解析到服务器IP上。</p>
+<h2 id="配置服务器">配置服务器</h2>
+<p><strong>1. 防火墙</strong></p>
+<p>在阿里云中，设置服务器防火墙自定义端口1111（随便设置），设置成默认端口8888可能不安全。</p>
+<p><strong>2. 宝塔面板</strong></p>
+<p>远程连接服务器，输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bt default</span><br></pre></td></tr></table></figure>
+<p>得到宝塔面板用户名和密码，以及外网面板地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">外网面板地址: http://xxx.xx.xxx.x:1111/login</span><br><span class="line">内网面板地址: http://xxx.xx.xx.xxx:1111/login</span><br><span class="line">username: ****</span><br><span class="line">password: ****</span><br></pre></td></tr></table></figure>
+<p>访问外网面板地址，就可以登录服务器的宝塔面板了，登录后安装LNMP。</p>
+<p>在&quot;宝塔面板-网站&quot;中添加站点，完成后记下SQL数据库的账号密码。</p>
+<p><strong>3. SSL证书</strong></p>
+<p>在阿里云中创建免费证书，下载nginx的pem/key，在&quot;宝塔面板-SSL&quot;中导入配置。</p>
+<p><strong>4. SQL数据库</strong></p>
+<p>在&quot;宝塔面板-数据库&quot;中，输入刚刚得到的数据库信息</p>
+<h2 id="WordPress建站">WordPress建站</h2>
+<p><strong>1. WordPress安装</strong></p>
+<p>在<a target="_blank" rel="noopener" href="https://wordpress.org/download/">WordPress官网</a>下载WordPress压缩包，在&quot;宝塔面板-文件&quot;中移入wwwroot后解压，将文件夹里的内容拖到wwwroot后，删除原文件夹和压缩包。<br>
+这样就可以通过访问spreng.top/wp-admin访问仪表盘了</p>
+<p><strong>2. 选择主题</strong></p>
+<p>在&quot;外观-主题&quot;中上传安装好看的主题，Argon、sakurairo等</p>
+<p><strong>3. 设计菜单</strong></p>
+<p>在&quot;外观-菜单&quot;中，设计一个简单的菜单，如&quot;Home、Category、Links、About&quot;，应用到顶部导航上。</p>
+<p>到这里基本就算完成了，接下来就可以发布文章啦。</p>
+<h2 id="遇到的问题">遇到的问题</h2>
+<p><strong>sakurairo主题分类页面显示不出来</strong></p>
+<p>改用了sakurairo主题，查看分类页面时发现404报错，好在这个问题已经被解决了，这里引用一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">一、wordpress后台设置</span><br><span class="line">左手边的菜单栏→设置→固定链接，建议选择自定义/index.php/%category%/%post_id%，或者/index.php/%category%/%postname%</span><br><span class="line"></span><br><span class="line">二、如果使用了宝塔，在宝塔面板左侧菜单栏选择网站→设置→伪静态，输入以下代码保存</span><br><span class="line">location /</span><br><span class="line">&#123;</span><br><span class="line">try_files $uri $uri/ /index.php?$args;</span><br><span class="line">&#125;</span><br><span class="line">rewrite /wp-admin$ $scheme://$host$uri/ permanent;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://spreng624.github.io">Spreng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://spreng624.github.io/uncategorized/21119463dbda/">http://spreng624.github.io/uncategorized/21119463dbda/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://spreng624.github.io" target="_blank">Spreng的小屋</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419145326001.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/uncategorized/21119463dbda/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">    博客搭建小记  摘要 本文详细阐述了个人博客的搭建过程，涵盖域名和服务器的准备工作、服务器配置以及基于 WordPress 的建站步骤。 在此，特别感谢 yolo 师傅的悉心指导，其专业支持为整个搭建过程提供了有力保障。 准备工作 1. 云服务器 第一次用的是阿里云，2核2G，首年68元，性价比还是很高的。 过一年后再找找其他服务器，个人博客对性能要求不高，应该能找到便宜的。 2. ICP备案 中国大陆内的服务器需要备案，得打印两个附件（告知书和承诺书），拍一个视频（朗读承诺书）。 3. 域名 在阿里云上注册域名，.top 后缀的一般比较便宜，10年188元，还能接受的价格（又掉入消费陷阱了）。 在域名控制台提交信息模板等审核，将域名解析到服务器IP上。 配置服务器 1. 防火墙 在阿里云中，设置服务器防火墙自定义端口1111（随便设置），设置成默认端口8888可能不安全。 2. 宝塔面板 远程连接服务器，输入： bt default  得到宝塔面板用户名和密码，以及外网面板地址： 外网面板地址:...</div></div></div></a><a class="pagination-related" href="/uncategorized/7bad7bd48d98/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">    【C语言】实现单链表及相关操作  摘要 本文介绍了C语言如何用结构体来实现单链表，以及单链表的基础操作。简洁起见，比较简单的操作都放在最后的完整代码里（说明在注释里），不再赘述。 有序插入 图解：  target的值为2 先找到合适的节点，此时prev=1，current=3 再改变next的值，将节点2指向3，节点1指向2。    Node *orderInsert(Node *head, Node *target) &#123;     Node *current = head;     Node *prev = NULL;     target-&gt;next = NULL; // 清空target的值，防止闭环、混入杂链等情况     // head为空值的情况     if (head == NULL)         return target;      while (current != NULL)     &#123;         // 比较要插入的单位，若比当前节点大则继续寻找，直到找到比目标大的节点         if...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://bucket-of-spreng.oss-cn-beijing.aliyuncs.com/img/20250419145326001.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Spreng</div><div class="author-info-description">crypro/reverse方向的CTFer</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/spreng624"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/spreng624" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:spreng624@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">配置服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WordPress%E5%BB%BA%E7%AB%99"><span class="toc-number">4.</span> <span class="toc-text">WordPress建站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">遇到的问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/uncategorized/4ef15376ebbd/" title="无标题">无标题</a><time datetime="2025-04-22T07:00:51.536Z" title="发表于 2025-04-22 15:00:51">2025-04-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/uncategorized/eaedcc038b53/" title="无标题">无标题</a><time datetime="2025-04-22T07:00:51.536Z" title="发表于 2025-04-22 15:00:51">2025-04-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/uncategorized/eaedcc038b53/" title="无标题">无标题</a><time datetime="2025-04-22T07:00:51.536Z" title="发表于 2025-04-22 15:00:51">2025-04-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/uncategorized/4ef15376ebbd/" title="无标题">无标题</a><time datetime="2025-04-22T07:00:51.534Z" title="发表于 2025-04-22 15:00:51">2025-04-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/uncategorized/7bad7bd48d98/" title="无标题">无标题</a><time datetime="2025-04-22T07:00:51.532Z" title="发表于 2025-04-22 15:00:51">2025-04-22</time></div></div></div></div></div></div></main><footer id="footer" style="background: orange;"><div id="footer-wrap"><div class="copyright">&copy;2025 By Spreng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (false) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'waline-spreng624s-projects.vercel.app',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
